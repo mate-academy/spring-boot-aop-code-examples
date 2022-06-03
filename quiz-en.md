@@ -1,25 +1,25 @@
 ## AOP (quiz)
 
-1. A moment during the execution of a program, such as the execution of a method or the handling of an exception is called ...
+1. A specific moment in the application such as method execution or exception handling has the name ...
+- `target`
 - `join point`
+- `pointcut`
+- `aspect`
+
+2. A logic executed by an aspect at a particular join point has the name ...
+- `join point`
+- `advice`
+- `pointcut`
+- `introduction`
+
+3. A predicate that matches join points has the name ...
+- `weaving`
 - `advice`
 - `pointcut`
 - `aspect`
 
-2. A logic executed by an aspect at a particular join point is called ...
-- `join point`
-- `advice`
-- `pointcut`
-- `aspect`
-
-3. A predicate that matches join points is called ...
-- `join point`
-- `advice`
-- `pointcut`
-- `aspect`
-
-5. A module containing the logic linked to many other parts of the program, but which is not related to the program's primary function is called ...
-- `join point`
+5. A module containing the logic linked to many other parts of the program, but which is not related to the program's primary function has the name ...
+- `introduction`
 - `advice`
 - `pointcut`
 - `aspect`
