@@ -12,7 +12,7 @@ According to his first principle states that any unit of code (method, class, pa
 Everything appears to be in clear, but what about the code that must run near the main one? For instance, how can the method's working time be calculated without breaking the SRP in either the method or the class where it is called?
 This question will be answered by **AOP**.
 
-> **AOP** is a programming paradigm based on the idea of separating the main and service functionality.
+> **AOP** - is a programming paradigm based on the idea of separating the main and service functionality.
 Service functionality refers to code that is not related to important business tasks.
 
 ##### An example of a business issue
@@ -47,7 +47,7 @@ Let's make a new package and class with a name that fits the situation. We use t
 
 And the first subject we need to learn about is **Advice**.
 
-> **Advice** is a method inside an aspect class that contains cross-cutting logic,
+> **Advice** - is a method inside an aspect class that contains cross-cutting logic,
 such as: logging, profiling, access control, transaction processing, exception handling, caching, etc.
 
 There are several types of such methods:
@@ -69,22 +69,22 @@ For example, let's create a method that logs a `findAll` method calling on an ob
         }
     }
 
-As you can see, we used the '@Before' annotation with a pattern specifying the signature of the function 
+As you can see, we used the `@Before` annotation with a pattern specifying the signature of the method 
 to set our **advice** so that it is run before executing the 'categoryService.findAll' method.
-Such expressions are called **Pointcut**. To specify a specific unit, we need to write the full path to its location.
+Such expressions are called **pointcuts**. To specify a specific unit, we need to write the full path to its location.
 In **spring** we use **AspectJ Pointcut expression language** to write **pointcuts**.
-##### Here is the structure:
+#### Here is the structure:
 
     execution(modifiers-pattern? ret-type-pattern declaring-type-pattern?name-pattern(param-pattern) throws-pattern?)
 
-- **modifiers-pattern** - Method visibility (public, protected, private, *)
+- **modifiers-pattern** - (optional) Method visibility (public, protected, private, *)
 - **ret-type-pattern** - Return type of the method
-- **declaring-type-pattern** - Package or class (ex: com.app.service.* - applies to all classes in this package, com.app.service.UserService - applies only to UserService class, * - all)
+- **declaring-type-pattern** - (optional) Package or class (ex: com.app.service.* - applies to all classes in this package, com.app.service.UserService - applies only to UserService class, * - all)
 - **name-pattern** - method name (ex: set* - all setters)
 - **param-pattern** - method parameters (.. - any number of parameters, java.lang.String - method taking String as parameter.
-- **throws-pattern** - Method throwing this exception.
+- **throws-pattern** - (optional) Method throwing this exception.
 
-> **Join points** are the points of program execution at which
+> **Join points** - are the points of program execution at which
 additional code needs to be added. For example: calling a method or accessing a class field.
 
 To access the method signature, arguments, and other information about `join points`,
@@ -139,14 +139,14 @@ Let's look at another example in which we will measure the execution speed of ea
 
 The 'within' designator came in helpful here, which determines within what type the given **advice** will work.
 
-In addition to the main `execution` and `within`, AspectJ supports other pointcut designators for more specific cases, such as:
-- `this` and `target` - execution of the connection point corresponding to the object of the specified type;
-- `args` - execution of the connection point where an argument of the specified type is available;
-- `call` - calling a method or a set of methods that match the condition;
-- `initialization` - class initialization;
+> In addition to the main `execution` and `within`, AspectJ supports other pointcut designators for more specific cases, such as:
+> - `this` and `target` - execution of the connection point corresponding to the object of the specified type;
+> - `args` - execution of the connection point where an argument of the specified type is available;
+> - `call` - calling a method or a set of methods that match the condition;
+> - `initialization` - class initialization;
 
-Overall, we learned how to define the simple aspect and got familiar with the terms of the AOP, 
-such as: **Aspect**, **Connection Point**, **Tip**, and **Point**.
+Overall, we learned how to define the simple aspect and got familiar with the basic terms of the principle, 
+such as: **Aspect**, **Join point**, **Advice**, **Pointcut**.
 
 ### Advantages
 By separating the main logic of a method, the purpose of which is described in its name,
@@ -156,17 +156,17 @@ from secondary service tasks, we simultaneously achieve:
 - Ease of reading and understanding the main logic of the project.
 - Simplification of unit testing.
 
-### Недостатки
+### Disadvantages
 The disadvantages of AOP include 2 things:
 - Slight performance hit due to bean proxying.
   It is also worth saying that if you do everything correctly and do not overload the code with countless aspects,
   in most cases, the advantages of this approach are much more significant.
 - High threshold of entry. Difficulties in understanding the concept, due to its non-obviousness.
-  As well as the risk of writing even more confusing code, abusing the use of aspects.
+  As well as the risk of writing even more confusing code abusing the use of aspects.
 
 ### AOP in spring
 Spring supports AOP by default and uses this approach under the hood, for example, in spring security.
-With the help of spring, you can solve the basic, most popular tasks in this direction, while AspectJ
+With the help of spring, you can solve the basic, most popular tasks in this style, while AspectJ
 provides a wider functionality that solves almost all possible tasks.
 For AOP to work in pure spring, you need to add the `@EnableAspectJAutoProxy` annotation in the config class.
 There is no such need in spring boot.
