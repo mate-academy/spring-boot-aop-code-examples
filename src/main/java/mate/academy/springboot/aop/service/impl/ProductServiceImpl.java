@@ -2,7 +2,6 @@ package mate.academy.springboot.aop.service.impl;
 
 import java.util.List;
 import lombok.AllArgsConstructor;
-import mate.academy.springboot.aop.model.Category;
 import mate.academy.springboot.aop.model.Product;
 import mate.academy.springboot.aop.repository.ProductRepository;
 import mate.academy.springboot.aop.service.ProductService;
