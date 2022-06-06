@@ -1,2 +1,2 @@
-## Spring boot AOP code exampales
+## Spring boot AOP code examples
 
