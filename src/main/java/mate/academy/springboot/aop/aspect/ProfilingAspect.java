@@ -17,12 +17,17 @@ public class ProfilingAspect {
     }
 
     @Around("allMethodsFromTimeWasteService()")
-    public Object profileTimeWasteService(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
+    public Object profileTimeWasteService(ProceedingJoinPoint proceedingJoinPoint)
+            throws Throwable {
         StopWatch stopWatch = new StopWatch();
         stopWatch.start();
         Object result = proceedingJoinPoint.proceed();
         stopWatch.stop();
-        log.info(stopWatch.prettyPrint());
+        log.info(String.format("Method \"%s\";%s%s ",
+                proceedingJoinPoint.getSignature().getName(),
+                System.lineSeparator(),
+                stopWatch.prettyPrint()
+        ));
         return result;
     }
 }
