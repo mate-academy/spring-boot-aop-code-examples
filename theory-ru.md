@@ -213,6 +213,8 @@ Spring по умолчанию поддерживает АОП и использ
 
 Полезные ссылки:
 
+- [Code examples from the theory](https://github.com/mate-academy/spring-boot-aop-code-example)
+
 - [Pointcut examples](https://howtodoinjava.com/spring-aop/aspectj-pointcut-expressions/)
 
 - [Spring AOP proxy under hood.](https://www.google.com/amp/s/habr.com/ru/amp/post/597797/)
