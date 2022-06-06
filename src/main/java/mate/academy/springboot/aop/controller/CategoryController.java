@@ -7,6 +7,7 @@ import mate.academy.springboot.aop.mapper.CategoryDtoMapper;
 import mate.academy.springboot.aop.model.Category;
 import mate.academy.springboot.aop.model.dto.CategoryResponseDto;
 import mate.academy.springboot.aop.service.CategoryService;
+import mate.academy.springboot.aop.service.TimeWasteService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,9 +18,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class CategoryController {
     private final CategoryService categoryService;
     private final CategoryDtoMapper categoryDtoMapper;
+    private final TimeWasteService timeWasteService;
 
     @GetMapping
     public List<CategoryResponseDto> getAllCategories() {
+        timeWasteService.wasteTwoSecond();
+        timeWasteService.wasteFiveSecond();
         return categoryService.findAll().stream()
                 .map(categoryDtoMapper::toResponseDto)
                 .collect(Collectors.toList());
