@@ -15,7 +15,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class CategoryServiceLoggingAspect {
     @Pointcut("execution(* mate.academy.springboot.aop.service.CategoryService.findAll())")
-    private void findAllCategoryServiceMethod() {}
+    private void findAllCategoryServiceMethod() {
+    }
 
     @Before("findAllCategoryServiceMethod()")
     public void beforeCategoryServiceFindAllMethodAdvice() {

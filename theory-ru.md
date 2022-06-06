@@ -110,7 +110,8 @@ Advices делятся на несколько видов, каждый из к�
 Давайте улучшим наш код воспользовавшись новой информацией.
 
     @Pointcut("execution(* mate.academy.springboot.aop.service.CategoryService.findAll())")
-    prviate void findAllCategoryServiceMethod() {}
+    prviate void findAllCategoryServiceMethod() {
+    }
 
     @Before("findAllCategoryServiceMethod()")
     public void beforeCategoryServiceFindAllMethodAdvice() {
